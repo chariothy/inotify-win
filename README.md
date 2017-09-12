@@ -33,7 +33,7 @@ Options:
 --exclude:       Do not process any events whose filename matches the specified regex
 --excludei:      Ditto, case-insensitive
 
---timeout:	     Timeout in seconds to run command. Default: 10
+--timeout:       Timeout in seconds to run command. Default: 10
 --command:       Command or program to run (cmd.exe for built-in command) (optional)
 --param:         Parameter of command or program (optional)
 
