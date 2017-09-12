@@ -18,7 +18,7 @@ $
 
 Usage
 =====
-The command line arguments are similar to the original one's:
+The command line arguments are similar to the original one's except --timeout and --exec:
 
 ```sh
 $ inotifywait.exe
@@ -33,13 +33,13 @@ Options:
 --exclude:       Do not process any events whose filename matches the specified regex
 --excludei:      Ditto, case-insensitive
 
+--timeout:	     Timeout in seconds to run command. Default: 10
+--command:       Command or program to run (cmd.exe for built-in command) (optional)
+--param:         Parameter of command or program (optional)
+
 Formats:
 %e             : Event name
 %f             : File name
 %w             : Path name
 %T             : Current date and time
 ```
-
-Known issues
-------------
-When moving files, not all events are reported consistently with the original. See [issue #7](https://github.com/thekid/inotify-win/issues/7) for an explanation. **Pull requests welcome!**

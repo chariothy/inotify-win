@@ -11,6 +11,7 @@ namespace De.Thekid.INotify
         private List<string> events = new List<string>();
         private List<string> paths = new List<string>();
         private string[] format = new string[] { "w", " ", "e", " ", "f" };
+        private int timeout = 10;
 
         /// -r
         public bool Recursive { get; set; }
@@ -27,6 +28,17 @@ namespace De.Thekid.INotify
             set { format = value; }
         }
 
+        /// --exec
+        public string Execute { get; set; }
+
+        /// -t
+        public int Timeout
+        {
+            get { return timeout; }
+            set { timeout = value; }
+        }
+        public string Command { get; set; }
+        public string Parameter { get; set; }
         /// --exclude[i]
         public Regex Exclude { get; set; }
 
@@ -56,5 +68,6 @@ namespace De.Thekid.INotify
         public List<string> Paths {
             get { return paths; }
         }
-      }
+
+    }
 }

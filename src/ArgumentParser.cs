@@ -75,6 +75,10 @@ namespace De.Thekid.INotify
             {
                 result.Exclude = new Regex(Value(args, ++i, "exclude"), RegexOptions.IgnoreCase);
             }
+            else if ("--exec" == option)
+            {
+                result.Exclude = new Regex(Value(args, ++i, "exec"), RegexOptions.IgnoreCase);
+            }
             else if (option.StartsWith("--event="))
             {
                 result.AddEvents(option.Split(new Char[]{'='}, 2)[1].Split(','));
@@ -90,6 +94,18 @@ namespace De.Thekid.INotify
             else if (option.StartsWith("--excludei="))
             {
                 result.Exclude = new Regex(option.Split(new Char[]{'='}, 2)[1], RegexOptions.IgnoreCase);
+            }
+            else if (option.StartsWith("--command="))
+            {
+                result.Execute = option.Split(new Char[] { '=' }, 2)[1];
+            }
+            else if (option.StartsWith("--timeout="))
+            {
+                result.Timeout = int.Parse(option.Split(new Char[] { '=' }, 2)[1]);
+            }
+            else if (option.StartsWith("--param="))
+            {
+                result.Parameter = option.Split(new Char[] { '=' }, 2)[1];
             }
             else if (Directory.Exists(option) || File.Exists(option))
             {
@@ -132,6 +148,10 @@ namespace De.Thekid.INotify
             writer.WriteLine("--format format: Format string for output.");
             writer.WriteLine("--exclude:       Do not process any events whose filename matches the specified regex");
             writer.WriteLine("--excludei:      Ditto, case-insensitive");
+            writer.WriteLine();
+            writer.WriteLine("-t/--timeout:	 Timeout in seconds to run command. Default: 10");
+            writer.WriteLine("-c/--command:    Command or program to run (cmd.exe for built-in command) (optional)");
+            writer.WriteLine("-p/--param:      Parameter of command or program (optional)");
             writer.WriteLine();
             writer.WriteLine("Formats:");
             writer.WriteLine("%e             : Event name");
