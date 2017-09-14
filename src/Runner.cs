@@ -157,6 +157,8 @@ namespace De.Thekid.INotify
         /// Output method
         protected void Output(TextWriter writer, string[] tokens, FileSystemEventArgs source, Change type, string name)
         {
+            writer.Write(DateTime.Now);
+            writer.Write(' ');
             foreach (var token in tokens)
             {
                 var path = Path.Combine(source.FullPath, name);
